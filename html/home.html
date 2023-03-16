@@ -6,13 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="shortcut icon" href="../media/images/vector/favicon.svg" type="image/x-icon">
     <title>Кактусы на ваш вкус!</title>
 </head>
 
-<body>
+<body class="body">
     <header>
-        <div class="container grid block-underline" style="grid-template-columns: max-content 1fr max-content;">
+        <div class="container-custom grid block-underline" style="grid-template-columns: max-content 1fr max-content;">
             <a href="./home.html">
                 <div class="logo flex-nowrap">
                     <svg class="logo" height="75" viewBox="0 0 409 117" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -164,22 +166,221 @@
                 <a class="nav-item" href="./blogs.html"><span class="item-block">Blogs</span></a>
             </nav>
             <div class="flex-nowrap">
-                <a class="cart" href="./cart.html">
+                <!-- Button trigger modal -->
+                <button type="button" class="button-def button-header flex-nowrap btn-lg margin-rm"
+                    data-bs-toggle="modal" data-bs-target="#modalId">
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
-                            d="M6 20C5.45 20 4.97933 19.8043 4.588 19.413C4.196 19.021 4 18.55 4 18C4 17.45 4.196 16.979 4.588 16.587C4.97933 16.1957 5.45 16 6 16C6.55 16 7.02067 16.1957 7.412 16.587C7.804 16.979 8 17.45 8 18C8 18.55 7.804 19.021 7.412 19.413C7.02067 19.8043 6.55 20 6 20ZM16 20C15.45 20 14.9793 19.8043 14.588 19.413C14.196 19.021 14 18.55 14 18C14 17.45 14.196 16.979 14.588 16.587C14.9793 16.1957 15.45 16 16 16C16.55 16 17.021 16.1957 17.413 16.587C17.8043 16.979 18 17.45 18 18C18 18.55 17.8043 19.021 17.413 19.413C17.021 19.8043 16.55 20 16 20ZM5.15 4L7.55 9H14.55L17.3 4H5.15ZM4.2 2H18.95C19.3333 2 19.625 2.17067 19.825 2.512C20.025 2.854 20.0333 3.2 19.85 3.55L16.3 9.95C16.1167 10.2833 15.8707 10.5417 15.562 10.725C15.254 10.9083 14.9167 11 14.55 11H7.1L6 13H18V15H6C5.25 15 4.68333 14.6707 4.3 14.012C3.91667 13.354 3.9 12.7 4.25 12.05L5.6 9.6L2 2H0V0H3.25L4.2 2Z"
+                            d="M14.5726 16.0029C10.5755 19.1865 4.988 18.3056 2.02842 14.6542C-0.828088 11.129 -0.64944 6.04347 2.44943 2.82482C5.65137 -0.500594 10.6854 -0.944524 14.3346 1.78337C15.642 2.76051 16.6183 4.00364 17.2542 5.50838C17.8938 7.02186 18.0881 8.59654 17.8663 10.2205C17.6452 11.837 17 13.2775 15.9499 14.6217C16.0349 14.6773 16.1255 14.7173 16.1904 14.7822C17.3448 15.9311 18.4947 17.0843 19.6491 18.2331C19.9227 18.5054 20.0589 18.8225 19.9776 19.2047C19.8165 19.9651 18.9107 20.2586 18.3298 19.7366C18.0575 19.4925 17.807 19.2234 17.5484 18.9649C16.6002 18.0177 15.6526 17.0699 14.7044 16.1227C14.665 16.0853 14.6238 16.0503 14.5726 16.0029ZM15.9605 8.98677C15.9705 5.12689 12.8529 2.00627 8.98261 2.00065C5.12292 1.99503 2.00781 5.09068 1.99094 8.94806C1.97408 12.8173 5.08544 15.9467 8.96762 15.9648C12.8117 15.9829 15.9505 12.8504 15.9605 8.98677Z"
                             fill="#264653" />
-                    </svg>Cart</a>
+                    </svg>
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalId" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <input type="text" class="form-control" name="" id="search" aria-describedby="helpId"
+                                    placeholder="Поиск по сайту">
+                                <button type="button" class="button-def button-cancel btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <small style="cursor: pointer;" id="helpId" onclick="searchFocus()"
+                                    class="form-text text-muted">Например:
+                                    Пахиверия
+                                    Шейдекери</small>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="button-def button-cancel"
+                                    data-bs-dismiss="modal">Закрыть</button>
+                                <button type="button" class="button-def button-accept">Найти</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="flex-nowrap cart margin-rm" href="./cart.html">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path id="cart"
+                            d="M17.1558 20.25H9.89066C6.78905 20.25 4.26569 17.7267 4.26569 14.6251V8.85947C4.26569 5.97621 2.82861 3.30739 0.421544 1.72031C-0.0107343 1.43531 -0.130077 0.853876 0.154921 0.421598C0.439919 -0.0107278 1.02131 -0.130118 1.45368 0.154974C2.82776 1.06097 3.94254 2.2559 4.73969 3.63167C4.91195 3.82466 6.30104 5.29699 8.57821 5.29699H19.3738C22.3191 5.24191 24.6245 8.19769 23.8544 11.0406L22.6117 15.9939C21.9829 18.4998 19.7394 20.25 17.1558 20.25V20.25ZM5.90415 6.64234C6.06001 7.36238 6.14068 8.10483 6.14068 8.85947V14.6251C6.14068 16.6928 7.82292 18.375 9.89066 18.375H17.1558C18.8782 18.375 20.3739 17.2082 20.793 15.5376L22.0358 10.5844C22.4933 8.89509 21.1233 7.13931 19.3738 7.17198H8.57816C7.54828 7.17198 6.65185 6.94993 5.90415 6.64234V6.64234ZM9.42191 22.8281C9.42191 22.1809 8.89724 21.6563 8.25004 21.6563C6.69511 21.7182 6.69647 23.9387 8.25004 24C8.89724 24 9.42191 23.4753 9.42191 22.8281ZM18.75 22.8281C18.75 22.1809 18.2253 21.6563 17.5781 21.6563C16.0232 21.7182 16.0245 23.9387 17.5781 24C18.2253 24 18.75 23.4753 18.75 22.8281ZM20.3113 9.98446C20.3113 9.46668 19.8916 9.04697 19.3738 9.04697H8.95316C7.7093 9.09647 7.71023 10.8729 8.95316 10.922H19.3738C19.8916 10.922 20.3113 10.5022 20.3113 9.98446Z"
+                            fill="#264653" />
+                    </svg></a>
+
+                <div class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitleId">Вход в аккаунт</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <input type="input" class="form-control" name="login" id="login"
+                                        placeholder="Логин">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" name="password" id="pass"
+                                        placeholder="Пароль">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" name="repeat password" id="repass"
+                                        placeholder="Повтор пароля">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <small>Нет аккаунта?</small>
+                                <button class="button-def button-accept" data-bs-target="#exampleModalToggle2"
+                                    data-bs-toggle="modal">Зарегестрироваться</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModalToggle2" aria-hidden="true"
+                    aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalToggleLabel2">Регистрация</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <input type="input" class="form-control" name="login" id="login"
+                                        placeholder="Логин">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" name="login" id="login"
+                                        placeholder="E-mail">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" name="password" id="pass"
+                                        placeholder="Пароль">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" name="repeat password" id="repass"
+                                        placeholder="Повтор пароля">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <small>Уже есть аккаунт?</small>
+                                <button class="button-def button-accept" data-bs-target="#exampleModalToggle"
+                                    data-bs-toggle="modal">Войти в аккаунт</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="button-ext button-bg" data-bs-toggle="modal" href="#exampleModalToggle" role="button">
+                    <svg class="margin-rs" width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.1601 9.10063H7.12598" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M14.7212 6.67065L17.1612 9.10065L14.7212 11.5307" stroke="white" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M12.6342 5.35829C12.3592 2.37496 11.2425 1.29163 6.80082 1.29163C0.883322 1.29163 0.883322 3.21663 0.883322 8.99996C0.883322 14.7833 0.883322 16.7083 6.80082 16.7083C11.2425 16.7083 12.3592 15.625 12.6342 12.6416"
+                            stroke="#F8F4E4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>Вход</a>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitleId">Вход в аккаунт</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <input type="input" class="form-control" name="login" id="login"
+                                        placeholder="Логин">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" name="password" id="pass"
+                                        placeholder="Пароль">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" name="repeat password" id="repass"
+                                        placeholder="Повтор пароля">
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <small>Нет аккаунта?</small>
+                                <a>Зарегестрироваться</a>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="button-def button-cancel"
+                                    data-bs-dismiss="modal">Закрыть</button>
+                                <button type="button" class="button-def button-accept">Войти</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
     </header>
     <main>
-
+        <div style="margin-top: 200px;" id="carouselId" class="carousel slide" data-bs-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true"
+                    aria-label="First slide"></li>
+                <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
+                <li data-bs-target="#carouselId" data-bs-slide-to="2" aria-label="Third slide"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <img src="holder.js/900x500/auto/#777:#555/text:First slide" class="w-100 d-block"
+                        alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Title</h3>
+                        <p>Description</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="holder.js/900x500/auto/#666:#444/text:Second slide" class="w-100 d-block"
+                        alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Title</h3>
+                        <p>Description</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="holder.js/900x500/auto/#666:#444/text:Third slide" class="w-100 d-block"
+                        alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Title</h3>
+                        <p>Description</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </main>
     <footer>
 
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+
 </body>
 <script defer src=" ../scripts/script.js">
 </script>

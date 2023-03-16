@@ -6,6 +6,7 @@
 }
 
 :root {
+
     --colorFaviconGradient: radial-gradient(50% 50% at 50% 50%, #AB71E4 61.46%, #FFBABA 100%);
     --colorGradientCenter: radial-gradient(50% 50% at 50% 50%, #E96A6A 26.04%, #AB71E4 53.12%, #AB71E4 71.35%, #FFBABA 100%);
     --colorGradientAlt: radial-gradient(50% 50% at 50% 50%, #2A9D8F 72.92%, #F8F4E4 100%);
@@ -19,6 +20,7 @@
     --colorTiffanyBlue: #77C8BE;
     --colorLightCoral: #E96A6A;
     --colorMelon: #FFBABA;
+    --colorTiffanyBlueTransparent: #77C8BE7a;
 }
 
 * {
@@ -30,6 +32,12 @@
 html {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: var(--colorCosmicLatte);
+}
+
+.body {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
 }
 
 a {
@@ -95,12 +103,18 @@ header nav>span {
 }
 
 header nav {
+    font-size: 18px;
     height: auto;
     width: 100%;
     align-items: center;
 }
 
-.container {
+header a {
+    color: var(--colorCharcoal);
+    text-decoration: none;
+}
+
+.container-custom {
     padding: 0 10%;
 }
 
@@ -141,14 +155,6 @@ header nav {
     height: 100%;
 }
 
-/* .nav-item:after.selected {
-    content: '';
-    font-weight: bold;
-    border-bottom-width: 4px;
-    border-bottom-style: solid;
-    border-bottom-color: var(--colorTiffanyBlue);
-} */
-
 .nav-item:after {
     position: absolute;
     content: '';
@@ -170,4 +176,94 @@ header nav {
 
 .block-underline {
     border-bottom: 2px solid var(--colorLavender);
+}
+
+.cart {
+    margin: auto;
+    height: max-content;
+    width: max-content;
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: all 250ms ease-out;
+}
+
+.cart:hover {
+    background-color: var(--colorTiffanyBlueTransparent);
+}
+
+.button-ext,
+.button-def {
+    position: relative;
+    transition: all 250ms ease-out;
+    font-size: medium;
+    font-weight: normal;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    margin: auto;
+}
+
+
+.button-def {
+    height: max-content;
+    width: max-content;
+    padding: 5px 10px;
+}
+
+.button-ext {
+    padding: 10px 20px;
+}
+
+.button-bg {
+    background-color: var(--colorPersianGreen);
+    color: var(--colorCosmicLatte);
+}
+
+.button-bg:hover {
+    background-color: var(--colorTiffanyBlue);
+    color: var(--colorCosmicLatte);
+}
+
+.button-header:hover {
+    background-color: var(--colorTiffanyBlueTransparent);
+}
+
+.button-cancel:hover {
+    background-color: var(--colorLightCoral);
+}
+
+.button-accept {
+    position: relative;
+}
+
+.button-accept:after {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 100%;
+    bottom: 0;
+    left: 50%;
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--colorPersianGreen);
+    transition: all 250ms ease-out;
+}
+
+.button-accept:hover:after {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    border-bottom-width: 4px;
+}
+
+.margin-rs {
+    margin-right: 8px;
+}
+
+.margin-rm {
+    margin-right: 24px;
+}
+
+.gap-s {
+    column-gap: 5px;
 }
