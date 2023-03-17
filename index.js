@@ -7,6 +7,8 @@ app.use(express.static('styles'));
 
 app.use(express.static('media'));
 
+app.use(express.static('scripts'));
+
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {

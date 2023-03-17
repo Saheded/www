@@ -1,5 +1,3 @@
-const { off } = require("process");
-
 var modalId = document.getElementById('modalSearch');
 
 modalId.addEventListener('show.bs.modal', function (event) {
