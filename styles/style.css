@@ -114,6 +114,10 @@ header a {
     text-decoration: none;
 }
 
+li {
+    list-style: none;
+}
+
 .container-custom {
     padding: 0 10%;
 }
@@ -178,7 +182,8 @@ header a {
     border-bottom: 2px solid var(--colorLavender);
 }
 
-.cart {
+.cart,
+.search {
     margin: auto;
     height: max-content;
     width: max-content;
@@ -266,4 +271,65 @@ header a {
 
 .gap-s {
     column-gap: 5px;
+}
+
+.from-control {
+    border-color: var(--colorPersianGreen);
+}
+
+.carousel-inner {
+    margin: auto;
+    display: block;
+    max-height: 800px;
+    max-width: 500px;
+}
+
+.carousel-inner h3,
+.carousel-inner p,
+.carousel-indicators,
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    border-radius: 20px;
+    background-color: #5a5a5aaa;
+    margin: 0 auto;
+}
+
+.carousel-inner h3 {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.carousel-inner p {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+footer>nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+footer {
+    margin-top: 50px;
+}
+
+footer h3 {
+    min-height: 52px;
+    text-align: center;
+}
+
+footer li {
+    color: var(--colorCharcoal);
+    transition: all 250ms ease-out;
+    width: max-content;
+}
+
+footer li:hover {
+    text-decoration: underline;
+}
+
+footer a {
+    display: block;
+    text-decoration: none;
+    width: min-content;
 }
